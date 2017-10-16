@@ -68,8 +68,8 @@
 			<p>UserCreate</p>
 		</div>
 		<div>
-			<s:if test="errorMassage != ''">
-				<s:property value="errorMassage" escape="false" />
+			<s:if test="errorMessage != ''">
+				<s:property value="errorMessage" escape="false" />
 			</s:if>
 			<table>
 			<s:form action="UserCreateConfirmAction">
@@ -78,7 +78,7 @@
 						<label>E-mailアドレス:</label>
 					</td>
 					<td>
-						<input required autofocus type="email" name="loginUserId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="" />
+						<input required autofocus type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="" />
 					</td>
 				</tr>
 				<tr>
@@ -86,7 +86,7 @@
 						<label>ログインPASS:</label>
 					</td>
 					<td>
-						<input required type="text" name="loginPassword" pattern="^[0-9A-Za-z]+$" value="" />
+						<input required type="text" name="password" pattern="^[0-9A-Za-z]+$" value="" />
 					</td>
 				</tr>
 				<tr>
@@ -101,7 +101,7 @@
 			</s:form>
 			</table>
 			<div>
-				<span>Topに戻る場合は</span><a href='<s:url action="GoHomeAction" />'>こちら</a>
+				<span>Topに戻る場合は</span><a href='<s:url action="TopAction" />'>こちら</a>
 			</div>
 		</div>
 	</div>

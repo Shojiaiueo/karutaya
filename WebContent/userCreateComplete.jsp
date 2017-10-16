@@ -71,7 +71,7 @@
 			<h3>ユーザーの登録が完了致しました。</h3>
 
 			<div>
-				<a href='<s:url action="HomeAction" />'>ログインへ</a>
+				<a href='login.jsp'>ログインへ</a>
 			</div>
 		</div>
 	</div>

@@ -6,7 +6,7 @@
    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
    id="WebApp_ID" version="3.0">
 
-<display-name>template</display-name>
+<display-name>karutaya</display-name>
 
 <welcome-file-list>
 <welcome-file>top.jsp</welcome-file>
@@ -20,6 +20,6 @@
 <url-pattern>/*</url-pattern>
 </filter-mapping>
 <session-config>
-  <session-timeout>1</session-timeout>
+  <session-timeout>30</session-timeout>
 </session-config>
 </web-app>

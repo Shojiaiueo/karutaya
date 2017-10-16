@@ -5,4 +5,4 @@
  * @author internousdev
  *
  */
-package com.internousdev.kaeruya.dto;
+package com.internousdev.karutaya.action;

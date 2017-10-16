@@ -7,24 +7,34 @@
 <struts>
 	<constant name="struts.devMode" value="true" />
 	<!-- 対象のpackageを設定 -->
-	<package name="com.internousdev.kaeruya.action" extends="struts-default">
+	<package name="com.internousdev.karutaya.action" extends="struts-default">
 
 	<!-- LoginExecuteAction -->
-    <action name="LoginExecuteAction" class="com.internousdev.kaeruya.action.LoginExecuteAction" method="execute">
+    <action name="LoginExecuteAction" class="com.internousdev.karutaya.action.LoginExecuteAction" method="execute">
       <result name="success">myPage.jsp</result>
       <result name="error">login.jsp</result>
     </action>
 
  <!-- LogoutExecuteAction -->
-    <action name="LogoutExecuteAction" class="com.internousdev.kaeruya.action.LogoutExecuteAction" method="execute">
+    <action name="LogoutExecuteAction" class="com.internousdev.karutaya.action.LogoutExecuteAction" method="execute">
       <result name="success">login.jsp</result>
     </action>
 
 <!-- TopAction -->
-    <action name="TopAction" class="com.internousdev.kaeruya.action.TopAction" method="execute">
+    <action name="TopAction" class="com.internousdev.karutaya.action.TopAction" method="execute">
       <result name="success">top.jsp</result>
     </action>
 
+<!-- UserCreateConfirmAction -->
+    <action name="UserCreateConfirmAction" class="com.internousdev.karutaya.action.UserCreateConfirmAction" method="execute">
+      <result name="success">userCreateConfirm.jsp</result>
+      <result name="error">userCreate.jsp</result>
+    </action>
+<!-- UserCreateCompletemAction -->
+    <action name="UserCreateCompleteAction" class="com.internousdev.karutaya.action.UserCreateCompleteAction" method="execute">
+      <result name="success">userCreateComplete.jsp</result>
+      <result name="error">error.jsp</result>
+    </action>
 
 	</package>
 </struts>

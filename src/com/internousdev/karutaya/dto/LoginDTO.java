@@ -1,4 +1,4 @@
-package com.internousdev.kaeruya.dto;
+package com.internousdev.karutaya.dto;
 
 public class LoginDTO {
 	private String email;

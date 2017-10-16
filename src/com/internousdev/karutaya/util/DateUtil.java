@@ -1,4 +1,4 @@
-package com.internousdev.kaeruya.util;
+package com.internousdev.karutaya.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,16 +1,17 @@
-package com.internousdev.kaeruya.action;
+package com.internousdev.karutaya.action;
 
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.kaeruya.dao.LoginExecuteDAO;
-import com.internousdev.kaeruya.dto.LoginDTO;
+import com.internousdev.karutaya.dao.LoginExecuteDAO;
+import com.internousdev.karutaya.dto.LoginDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginExecuteAction extends ActionSupport implements SessionAware {
 	private String email;
 	private String password;
+	private String userName;
 	private Map<String, Object> session;
 
 	public String execute(){
@@ -22,6 +23,7 @@ public class LoginExecuteAction extends ActionSupport implements SessionAware {
 		  if(dto.getUserId()>0){
 			result=SUCCESS;
 			session.put("userId", dto.getUserId());
+			userName=dto.getUserName();
 		  }
 		}
 
@@ -50,6 +52,14 @@ public class LoginExecuteAction extends ActionSupport implements SessionAware {
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 }

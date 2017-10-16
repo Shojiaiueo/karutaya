@@ -1,12 +1,12 @@
-package com.internousdev.kaeruya.dao;
+package com.internousdev.karutaya.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.internousdev.kaeruya.dto.LoginDTO;
-import com.internousdev.kaeruya.util.DBConnector;
+import com.internousdev.karutaya.dto.LoginDTO;
+import com.internousdev.karutaya.util.DBConnector;
 
 public class LoginExecuteDAO {
 	private DBConnector dbConnector = new DBConnector();

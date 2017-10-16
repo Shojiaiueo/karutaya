@@ -5,4 +5,4 @@
  * @author internousdev
  *
  */
-package com.internousdev.kaeruya.dao;
+package com.internousdev.karutaya.dao;
