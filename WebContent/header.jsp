@@ -43,8 +43,8 @@
 
 
 <body>
- <s:if test="#loginUserInfoMap.loginUserId == null">
-   <a href="<s:url action="GoHomeAction" />"><img class="logo" src="img/カルタ屋ロゴ.png"></a>
+ <s:if test="#session.userId == null">
+   <a href="<s:url action="TopAction" />"><img class="logo" src="img/カルタ屋ロゴ.png"></a>
    <a href="login.jsp" class="header_btn">ログイン</a>
    <a href="userCreate.jsp" class="header_btn">会員登録</a>
    <a href="<s:url action="GoCartAction"/>" class="header_btn">カート</a>

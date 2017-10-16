@@ -79,9 +79,9 @@
 		</s:if>
 			<div id="text-right">
         <p><s:property value="userName" />様</p>
-				<p>Topへ戻る場合は<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
-        <p>購入履歴は<a href='<s:url action="MyPageAction" />'>こちら</a></p>
-				<p>ログアウトする場合は<a href='<s:url action="LogoutAction" />'>こちら</a></p>
+				<p>Topへ戻る場合は<a href='<s:url action="TopAction" />'>こちら</a></p>
+        <p>購入履歴は<a href='<s:url action="HistoryAction" />'>こちら</a></p>
+				<p>ログアウトする場合は<a href='<s:url action="LogoutExecuteAction" />'>こちら</a></p>
 			</div>
 		</div>
 	</div>

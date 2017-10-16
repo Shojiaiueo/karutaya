@@ -74,15 +74,15 @@
 			<p>Login</p>
 		</div>
 			<h3></h3>
-			<s:form action="LoginAction">
-				<s:textfield type="email"  name="loginUserId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="email" required="true" />
-				<s:password name="loginPassword" type="password" pattern="^[0-9A-Za-z]+$" placeholder="password" required="true" />
+			<s:form action="LoginExecuteAction">
+				<s:textfield type="email"  name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="email" required="true" />
+				<s:password name="password" type="password" pattern="^[0-9A-Za-z]+$" placeholder="password" required="true" />
 				<s:submit  value="ログイン" />
 			</s:form>
 			<br/>
 			<div id="text-link">
 				<p>新規ユーザー登録は<a href='<s:url action="UserCreateAction" />'>こちら</a></p>
-				<p>Homeへ戻る場合は<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
+				<p>Homeへ戻る場合は<a href='<s:url action="TopAction" />'>こちら</a></p>
 			</div>
 	</div>
 	<div id="footer">
