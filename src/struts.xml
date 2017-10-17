@@ -30,11 +30,29 @@
       <result name="success">userCreateConfirm.jsp</result>
       <result name="error">userCreate.jsp</result>
     </action>
+
 <!-- UserCreateCompletemAction -->
     <action name="UserCreateCompleteAction" class="com.internousdev.karutaya.action.UserCreateCompleteAction" method="execute">
       <result name="success">userCreateComplete.jsp</result>
       <result name="error">error.jsp</result>
     </action>
+
+<!-- SearchAction -->
+    <action name="SearchAction" class="com.internousdev.karutaya.action.SearchAction" method="execute">
+      <result name="success">searchList.jsp</result>
+    </action>
+
+<!-- ItemIdAction -->
+    <action name="ItemIdAction" class="com.internousdev.karutaya.action.ItemIdAction" method="execute">
+      <result name="success">searchList.jsp</result>
+    </action>
+
+<!-- SpecialAction -->
+    <action name="SpecialAction" class="com.internousdev.karutaya.action.SpecialAction" method="execute">
+      <result name="success">searchList.jsp</result>
+    </action>
+
+
 
 	</package>
 </struts>

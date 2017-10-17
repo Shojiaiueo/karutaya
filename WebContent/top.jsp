@@ -46,7 +46,7 @@
 		#main {
 		   width: 100%;
 		   height: 500px;+
-       
+
 		   text-align: center;
 		}
 
@@ -67,11 +67,67 @@
 	<div id="header">
 	 	<s:include value="header.jsp" />
 	</div>
-	<div id="main">
-    
-		aaaaaaaaa
-	</div>
-	<div id="footer">
+
+  <div id="right">
+     <div id="top">
+       <s:form action="SearchAction">
+            <s:textfield name="searchWord" />
+            <s:submit value="検索" />
+       </s:form>
+     </div>
+
+     <s:form action="ItemIdAction">
+        <s:hidden name="searchId" value="1" />
+        <s:submit value="1-10" />
+     </s:form>
+     <s:form action="ItemIdAction">
+        <s:hidden name="searchId" value="11" />
+        <s:submit value="11-20" />
+     </s:form>
+     <s:form action="ItemIdAction">
+        <s:hidden name="searchId" value="21" />
+        <s:submit value="21-30" />
+     </s:form>
+     <s:form action="ItemIdAction">
+        <s:hidden name="searchId" value="31" />
+        <s:submit value="31-40" />
+     </s:form>
+     <s:form action="ItemIdAction">
+        <s:hidden name="searchId" value="41" />
+        <s:submit value="41-50" />
+     </s:form>
+     <s:form action="ItemIdAction">
+        <s:hidden name="searchId" value="51" />
+        <s:submit value="51-60" />
+     </s:form>
+     <s:form action="ItemIdAction">
+        <s:hidden name="searchId" value="61" />
+        <s:submit value="61-70" />
+     </s:form>
+     <s:form action="ItemIdAction">
+        <s:hidden name="searchId" value="71" />
+        <s:submit value="71-80" />
+     </s:form>
+     <s:form action="ItemIdAction">
+        <s:hidden name="searchId" value="81" />
+        <s:submit value="81-90" />
+     </s:form>
+     <s:form action="ItemIdAction">
+        <s:hidden name="searchId" value="91" />
+        <s:submit value="91-100" />
+     </s:form>
+  </div>
+
+
+
+  <div id="main">
+     <s:form action="SpecialAction">
+        <s:hidden name="special" value="special1" />
+        <s:submit value="special1" />
+     </s:form>
+  </div>
+
+  <div id="footer">
 	 	<div id="pr">
 		</div>
 	</div>
