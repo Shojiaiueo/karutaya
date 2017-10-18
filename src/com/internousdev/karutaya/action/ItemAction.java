@@ -1,5 +1,6 @@
 package com.internousdev.karutaya.action;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -10,13 +11,12 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ItemAction extends ActionSupport implements SessionAware{
 	private int itemid;
-
+	private ArrayList<ItemDTO> item=new ArrayList<ItemDTO>();
 	private Map<String,Object> session;
 
 	public String execute(){
 		ItemDAO dao=new ItemDAO();
-		ItemDTO dto=new ItemDTO();
-		dto=dao.search(itemid);
+		setItem(dao.search(itemid));
 		return SUCCESS;
 	}
 
@@ -35,6 +35,14 @@ public class ItemAction extends ActionSupport implements SessionAware{
 
 	public Map<String,Object> getSession(){
 		return session;
+	}
+
+	public ArrayList<ItemDTO> getItem() {
+		return item;
+	}
+
+	public void setItem(ArrayList<ItemDTO> item) {
+		this.item = item;
 	}
 
 }

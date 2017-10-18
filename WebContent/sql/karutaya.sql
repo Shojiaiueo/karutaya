@@ -8,6 +8,10 @@ password varchar(255),
 username varchar(255)
 );
 
+create table sessionid(
+sessionid int
+);
+
 INSERT INTO users VALUES(1,"aaa@gmail.com","111","山田太郎");
 
 create table items(
