@@ -46,13 +46,13 @@
  <s:if test="#session.userId == null">
    <a href="<s:url action="TopAction" />"><img class="logo" src="img/カルタ屋ロゴ.png"></a>
    <a href="login.jsp" class="header_btn">ログイン</a>
-   <a href="userCreate.jsp" class="header_btn">会員登録</a>
-   <a href="<s:url action="GoCartAction"/>" class="header_btn">カート</a>
+   <a href="<s:url action="UserCreateAction"/>" class="header_btn">会員登録</a>
+   <a href="<s:url action="CartAction"/>" class="header_btn">カート</a>
   </s:if>
   <s:else>
-   <a href="login.jsp"><img class="logo" src="img/カルタ屋ロゴ.png"></a>
-   <a href="myPage.jsp" class="header_btn">マイページ</a>
-   <a href="<s:url action="GoCartAction"/>" class="header_btn">カート</a>
+    <a href="<s:url action="TopAction" />"><img class="logo" src="img/カルタ屋ロゴ.png"></a>
+   <a href="<s:url action="MyPageAction" />" class="header_btn">マイページ</a>
+   <a href="<s:url action="CartAction"/>" class="header_btn">カート</a>
   </s:else>
 
 </body>

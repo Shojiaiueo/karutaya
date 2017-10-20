@@ -13,22 +13,29 @@ public class CartAddAction extends ActionSupport implements SessionAware{
 	private Map<String,Object> session;
 
 	private int itemid;
-	ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
+	private ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
 
 
 
 	public String execute(){
 		String result=ERROR;
 		CartAddDAO dao=new CartAddDAO();
-		int sessionid = 0;
-		while(dao.checksessionid(sessionid)){
-		     sessionid=(int)(Math.random()*1000000000);
-		}
-		session.put("sessionid",sessionid);
+		int sessionid;
 		if(session.containsKey("sessionid")){
-			if(dao.insertsessionid(sessionid)>0){
+			sessionid=(int) session.get("sessionid");
 			result=LOGIN;
+		}else{
+			sessionid = 0;
+			while(dao.checksessionid(sessionid)){
+			     sessionid=(int)(Math.random()*1000000000);
 			}
+			session.put("sessionid",sessionid);
+			if(session.containsKey("sessionid")){
+				if(dao.insertsessionid(sessionid)>0){
+				result=LOGIN;
+				}
+			}
+
 		}
 
 		if(result==LOGIN){
@@ -69,6 +76,14 @@ public class CartAddAction extends ActionSupport implements SessionAware{
 
 	public void setItemid(int itemid) {
 		this.itemid = itemid;
+	}
+
+	public ArrayList<CartDTO> getCartList() {
+		return cartList;
+	}
+
+	public void setCartList(ArrayList<CartDTO> cartList) {
+		this.cartList = cartList;
 	}
 
 }

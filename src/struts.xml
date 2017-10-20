@@ -25,6 +25,16 @@
       <result name="success">top.jsp</result>
     </action>
 
+<!-- MyPageAction -->
+    <action name="MyPageAction" class="com.internousdev.karutaya.action.MyPageAction" method="execute">
+      <result name="success">myPage.jsp</result>
+    </action>
+
+<!-- UserCreateAction -->
+    <action name="UserCreateAction" class="com.internousdev.karutaya.action.UserCreateAction" method="execute">
+      <result name="success">userCreate.jsp</result>
+    </action>
+
 <!-- UserCreateConfirmAction -->
     <action name="UserCreateConfirmAction" class="com.internousdev.karutaya.action.UserCreateConfirmAction" method="execute">
       <result name="success">userCreateConfirm.jsp</result>
@@ -35,6 +45,25 @@
     <action name="UserCreateCompleteAction" class="com.internousdev.karutaya.action.UserCreateCompleteAction" method="execute">
       <result name="success">userCreateComplete.jsp</result>
       <result name="error">error.jsp</result>
+    </action>
+
+<!-- AddressCreateAction -->
+    <action name="AddressCreateAction" class="com.internousdev.karutaya.action.AddressCreateAction" method="execute">
+      <result name="success">addressCreate.jsp</result>
+    </action>
+
+
+<!-- AddressCreateConfirmAction -->
+    <action name="AddressCreateConfirmAction" class="com.internousdev.karutaya.action.AddressCreateConfirmAction" method="execute">
+      <result name="success">addressCreateConfirm.jsp</result>
+      <result name="error">addressCreate.jsp</result>
+    </action>
+
+<!-- AddressCreateCompleteAction -->
+    <action name="AddressCreateCompleteAction" class="com.internousdev.karutaya.action.AddressCreateCompleteAction" method="execute">
+      <result name="success">addressCreateComplete.jsp</result>
+      <result name="error">error.jsp</result>
+      <result name="login">purchase.jsp</result>
     </action>
 
 <!-- SearchAction -->
@@ -62,6 +91,42 @@
       <result name="success">cart.jsp</result>
       <result name="login">cart.jsp</result>
       <result name="error">error.jsp</result>
+    </action>
+
+<!-- CartAction -->
+    <action name="CartAction" class="com.internousdev.karutaya.action.CartAction" method="execute">
+      <result name="success">cart.jsp</result>
+    </action>
+
+<!-- CartItemDeleteAction -->
+    <action name="CartItemDeleteAction" class="com.internousdev.karutaya.action.CartItemDeleteAction" method="execute">
+      <result name="success">cart.jsp</result>
+      <result name="error">error.jsp</result>
+    </action>
+
+<!-- CartUpdateAction -->
+    <action name="CartUpdateAction" class="com.internousdev.karutaya.action.CartUpdateAction" method="execute">
+      <result name="success">cart.jsp</result>
+      <result name="error">error.jsp</result>
+    </action>
+
+<!-- PurchaseAction -->
+    <action name="PurchaseAction" class="com.internousdev.karutaya.action.PurchaseAction" method="execute">
+      <result name="success">purchase.jsp</result>
+      <result name="error">error.jsp</result>
+      <result name="login">loginpurchase.jsp</result>
+    </action>
+
+<!-- LoginPurchaseExecuteAction -->
+    <action name="LoginPurchaseExecuteAction" class="com.internousdev.karutaya.action.LoginPurchaseExecuteAction" method="execute">
+      <result name="success">purchase.jsp</result>
+      <result name="error">loginpurchase.jsp</result>
+    </action>
+
+<!-- CheckAction -->
+    <action name="CheckAction" class="com.internousdev.karutaya.action.CheckAction" method="execute">
+      <result name="success">check.jsp</result>
+      <result name="error">purchase.jsp</result>
     </action>
 
 	</package>

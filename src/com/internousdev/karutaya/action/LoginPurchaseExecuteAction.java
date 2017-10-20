@@ -1,33 +1,40 @@
 package com.internousdev.karutaya.action;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.karutaya.dao.LoginExecuteDAO;
+import com.internousdev.karutaya.dao.PurchaseDAO;
+import com.internousdev.karutaya.dto.AddressDTO;
 import com.internousdev.karutaya.dto.LoginDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginExecuteAction extends ActionSupport implements SessionAware {
+public class LoginPurchaseExecuteAction extends ActionSupport implements SessionAware {
 	private String email;
 	private String password;
+	private ArrayList<AddressDTO> addressList;
 	private String userName;
 	private Map<String, Object> session;
 
 	public String execute(){
 		String result=ERROR;
-		if(!(email.equals(null))&&!(password.equals(null))){
-		  LoginExecuteDAO dao=new LoginExecuteDAO();
-		  LoginDTO dto=dao.login(email, password);
+		if(session.containsKey("sessionid")){
+			if(!(email.equals(null))&&!(password.equals(null))){
+				  LoginExecuteDAO dao=new LoginExecuteDAO();
+				  LoginDTO dto=dao.login(email, password);
 
-		  if(dto.getUserId()>0){
-			  if(dto.getDeleteflag()==0){
-				    result=SUCCESS;
-				    session.put("userId", dto.getUserId());
-					userName=dto.getUserName();
-			  }
-
-		  }
+				  if(dto.getUserId()>0){
+					  if(dto.getDeleteflag()==0){
+						    result=SUCCESS;
+							session.put("userId", dto.getUserId());
+							userName=dto.getUserName();
+							PurchaseDAO purchasedao = new PurchaseDAO();
+							addressList=purchasedao.address((int) session.get("userId"));
+					  }
+				  }
+				}
 		}
 
 		return result;
@@ -63,6 +70,14 @@ public class LoginExecuteAction extends ActionSupport implements SessionAware {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public ArrayList<AddressDTO> getAddressList() {
+		return addressList;
+	}
+
+	public void setAddressList(ArrayList<AddressDTO> addressList) {
+		this.addressList = addressList;
 	}
 
 }

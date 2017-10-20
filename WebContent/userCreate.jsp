@@ -65,7 +65,7 @@
 	</div>
 	<div id="main">
 		<div id="top">
-			<p>UserCreate</p>
+			<p>ユーザ情報の登録</p>
 		</div>
 		<div>
 			<s:if test="errorMessage != ''">

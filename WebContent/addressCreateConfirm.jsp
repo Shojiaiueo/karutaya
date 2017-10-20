@@ -13,7 +13,10 @@
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta charset="utf-8">
-  <title>MyPage画面</title>
+  <title>お届け先の登録確認画面</title>
+
+
+
   <style type="text/css">
   /* ========TAG LAYOUT======== */
     body {
@@ -70,39 +73,52 @@
   </div>
   <div id="main">
     <div id="top">
-      <p>MyPage</p>
+      <p>お届け先の登録確認</p>
     </div>
+    <div>
 
+      <table>
 
-<s:if test="myPageList == null">
-      <h3>ご購入情報はありません。</h3>
-    </s:if>
-    <s:elseif test="message == null">
-      <h3>ご購入情報は以下になります。</h3>
-      <table border="1">
-      <tr>
-        <th>商品名</th>
-        <th>値段</th>
-        <th>購入個数</th>
-        <th>支払い方法</th>
-        <th>購入日</th>
-      </tr>
-      <s:iterator value="myPageList">
         <tr>
-          <td><s:property value="itemName" /></td>
-          <td><s:property value="totalPrice" /><span>円</span></td>
-          <td><s:property value="totalCount" /><span>個</span></td>
-          <td><s:property value="payment" /></td>
-          <td><s:property value="insert_date" /></td>
+          <td>
+            <label>郵便番号:</label>
+          </td>
+          <td>
+            <s:property value="addressnumber" />
+          </td>
         </tr>
-      </s:iterator>
-      </table>
-      <s:form action="MyPageAction">
-        <input type="hidden" name="deleteFlg" value="1">
-        <s:submit value="削除" method="delete" />
+        <tr>
+          <td>
+            <label>住所:</label>
+          </td>
+          <td>
+            <s:property value="address" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>宛名:</label>
+          </td>
+          <td>
+            <s:property value="addressname"/>
+          </td>
+        </tr>
+      <s:form action="AddressCreateCompleteAction">
+        <s:hidden name="addressnumber" value="%{addressnumber}" />
+        <s:hidden name="address" value="%{address}" />
+        <s:hidden name="addressname" value="%{addressname}" />
+        <s:hidden name="purchaseflag" value="%{purchaseflag}" />
+        <s:submit value="完了"/>
       </s:form>
-    </s:elseif>
-    <p>Topへ戻る場合は<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
-   </div>
+      </table>
+      <div>
+        <span>Topに戻る場合は</span>こちら
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <div id="pr">
+    </div>
+  </div>
 </body>
 </html>

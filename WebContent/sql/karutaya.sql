@@ -1,18 +1,37 @@
 drop database if exists karutaya;
 create database karutaya;
 use karutaya;
+
 create table users(
 userid int not null primary key auto_increment,
 email varchar(255),
 password varchar(255),
-username varchar(255)
+username varchar(255),
+deleteflag int default 0
+);
+
+create table address(
+addressid int not null primary key auto_increment,
+userid int,
+addressname varchar(50),
+addressnumber varchar(16),
+address varchar(255),
+foreign key(userid) references users(userid)
 );
 
 create table sessionid(
 sessionid int
 );
 
-INSERT INTO users VALUES(1,"aaa@gmail.com","111","山田太郎");
+create table cart(
+sessionid int,
+itemid int,
+quantity int
+);
+
+INSERT INTO users VALUES(1,"aaa@gmail.com","111","山田太郎",0);
+
+INSERT INTO address VALUES(1,1,"山田家","１２３４５６７","東京都文京区弥生１－１ハイツサトウ３３４");
 
 create table items(
 itemid int not null primary key auto_increment,

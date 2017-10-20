@@ -30,6 +30,7 @@ public class LoginExecuteDAO {
 			loginDTO.setPassword(password);
 			loginDTO.setUserId(rs.getInt("userid"));
 			loginDTO.setUserName(rs.getString("username"));
+			loginDTO.setDeleteflag(rs.getInt("deleteflag"));
 			}else{
 				loginDTO.setUserId(0);
 			}
