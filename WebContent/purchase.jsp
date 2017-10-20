@@ -83,7 +83,7 @@
 
                  お届け先<br>
                  <s:iterator value="addressList">
-                    <input type="radio" name="wheredeliver" value="<s:property value="addressid"/>"><s:property value="addressname" />様<br>
+                    <input type="radio" name="addressid" value="<s:property value="addressid"/>"><s:property value="addressname" />様<br>
                     <s:property value="addressnumber"/><br>
                     <s:property value="address"/><br>
                     <s:property value="addressname"/>様<br>

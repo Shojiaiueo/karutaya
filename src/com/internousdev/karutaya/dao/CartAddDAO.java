@@ -160,6 +160,7 @@ public class CartAddDAO {
 			             dto.setSpecial2(rs2.getString("special2"));
 			             dto.setSpecial3(rs2.getString("special3"));
 			             dto.setSpecial4(rs2.getString("special4"));
+			             dto.setSubtotal(rs2.getInt("price")*rs.getInt("quantity"));
 				}
 			  }catch(SQLException e){
 				  e.printStackTrace();

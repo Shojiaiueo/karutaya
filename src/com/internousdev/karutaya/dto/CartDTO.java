@@ -14,6 +14,7 @@ public class CartDTO {
 	private String special3;
 	private String special4;
 	private int quantity;
+	private int subtotal;
 
 	public int getItemid() {
 		return itemid;
@@ -92,6 +93,12 @@ public class CartDTO {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	public int getSubtotal() {
+		return subtotal;
+	}
+	public void setSubtotal(int subtotal) {
+		this.subtotal = subtotal;
 	}
 
 
