@@ -1,20 +1,16 @@
 package com.internousdev.karutaya.action;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.karutaya.dao.CartAddDAO;
-import com.internousdev.karutaya.dao.CheckDAO;
-import com.internousdev.karutaya.dao.PurchaseDAO;
-import com.internousdev.karutaya.dto.AddressDTO;
+import com.internousdev.karutaya.dao.CompleteDAO;
 import com.internousdev.karutaya.dto.CartDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CheckAction extends ActionSupport implements SessionAware{
+public class CompleteAction extends ActionSupport implements SessionAware{
 	private Map<String,Object> session;
 	private int addressid;
 	private String howdeliver;
@@ -30,8 +26,7 @@ public class CheckAction extends ActionSupport implements SessionAware{
 	private String addressname;
 	private String addressnumber;
 	private String address;
-	private ArrayList<AddressDTO> addressList;
-	PurchaseDAO dao=new PurchaseDAO();
+	CompleteDAO completedao=new CompleteDAO();
 
 
 
@@ -39,51 +34,16 @@ public class CheckAction extends ActionSupport implements SessionAware{
 	public String execute(){
 		String result=ERROR;
 		if(session.containsKey("sessionid")){
-			if(addressid==0){
-				errorflag=true;
-				setAddressList(dao.address((int) session.get("userId")));
-				userName=dao.username((int) session.get("userId"));
-				result=LOGIN;
-			}else{
-				errorflag=false;
-				result=SUCCESS;
+			if(completedao.purchaseoutline((int) session.get("userId"), total, addressid, howdeliver, howpay)>0){
 				CartAddDAO dao = new CartAddDAO();
 				cartList=dao.cart((int) session.get("sessionid"));
 				for(int i=0;i<cartList.size();i++){
-					itemtotal += cartList.get(i).getSubtotal();
-				}
-
-				if(howdeliver.equals("ゆうパック")){
-					postage=200;
-				}else{
-					postage=0;
+					if(completedao.purchasedetail(cartList.get(i).getItemid(), cartList.get(i).getQuantity())>0){
+						result=SUCCESS;
 					}
-
-				if(howpay.equals("クレジットカード")){
-				      errorflag=true;
-				      commission=0;
-				      Date date=new Date();
-				      SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy");
-				      int nowyear=Integer.parseInt(simpleDateFormat.format(date));
-				      for(int i=0;i<5;i++){
-				    	  year[i]=nowyear+i;
-				      }
-				}else{
-					commission=100;
 				}
-
-				total=itemtotal+postage+commission;
-
-				PurchaseDAO purchasedao=new PurchaseDAO();
-				userName=purchasedao.username((int) session.get("userId"));
-
-				CheckDAO checkdao=new CheckDAO();
-				AddressDTO addressdto=new AddressDTO();
-				addressdto=checkdao.address((int) session.get("userId"), addressid);
-				address=addressdto.getAddress();
-				addressname=addressdto.getAddressname();
-				addressnumber=addressdto.getAddressnumber();
 			}
+
 		}
 
 	      return result;
@@ -209,14 +169,6 @@ public class CheckAction extends ActionSupport implements SessionAware{
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public ArrayList<AddressDTO> getAddressList() {
-		return addressList;
-	}
-
-	public void setAddressList(ArrayList<AddressDTO> addressList) {
-		this.addressList = addressList;
 	}
 
 }

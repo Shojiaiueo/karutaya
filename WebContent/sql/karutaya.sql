@@ -3,7 +3,7 @@ create database karutaya;
 use karutaya;
 
 create table users(
-userid int not null primary key auto_increment,
+userid int primary key auto_increment,
 email varchar(255),
 password varchar(255),
 username varchar(255),
@@ -19,22 +19,8 @@ address varchar(255),
 foreign key(userid) references users(userid)
 );
 
-create table sessionid(
-sessionid int
-);
-
-create table cart(
-sessionid int,
-itemid int,
-quantity int
-);
-
-INSERT INTO users VALUES(1,"aaa@gmail.com","111","山田太郎",0);
-
-INSERT INTO address VALUES(1,1,"山田家","１２３４５６７","東京都文京区弥生１－１ハイツサトウ３３４");
-
 create table items(
-itemid int not null primary key auto_increment,
+itemid int primary key auto_increment,
 itemname varchar(50),
 author varchar(16),
 price decimal,
@@ -47,6 +33,45 @@ special2 int,
 special3 int,
 special4 int
 );
+
+
+create table sessionid(
+sessionid int
+);
+
+create table cart(
+sessionid int,
+itemid int,
+quantity int,
+foreign key(itemid) references items(itemid)
+);
+
+
+create table purchaseoutlines(
+purchaseoutlineid int primary key auto_increment,
+userid int,
+total int,
+addressid int(10),
+howdeliver varchar(10),
+howpay varchar(10),
+creditnumber varchar(20),
+purchasetime datetime default current_timestamp,
+foreign key(userid) references users(userid)
+);
+
+
+create table purchasedetails(
+purchaseoutlineid int,
+itemid int,
+quantity int,
+foreign key(purchaseoutlineid) references purchaseoutlines(purchaseoutlineid),
+foreign key(itemid) references items(itemid)
+);
+
+INSERT INTO users VALUES(1,"aaa@gmail.com","111","山田太郎",0);
+
+INSERT INTO address VALUES(1,1,"山田家","１２３４５６７","東京都文京区弥生１－１ハイツサトウ３３４");
+
 
 INSERT INTO items(itemid,itemname,author,price,stocks,itemimg) VALUES
 (1,"あきのたの かりおのいおの とまをあらみ わがころもでは つゆにぬれつつ","天智天皇",2,1000,"img/001.jpg"),

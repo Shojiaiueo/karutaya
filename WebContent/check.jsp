@@ -127,13 +127,7 @@
                 <tr>
                     <th>カード番号</th>
                     <td>
-                         <input type="text" required>
-                    </td>
-                </tr>
-                <tr>
-                    <th>セキュリティコード</th>
-                    <td>
-                        <input type="text" required>
+                         <input type="text" name="creditnumber" pattern="^[0-9]+$" required>
                     </td>
                 </tr>
                 <tr>
@@ -162,6 +156,12 @@
                          </select>&nbsp;年
                     </td>
                 </tr>
+                <tr>
+                    <th>セキュリティコード</th>
+                    <td>
+                        <input type="text" name="creditsecurity" pattern="^[0-9]+$" required>
+                    </td>
+                </tr>
               </table>
 
 
@@ -169,6 +169,17 @@
         </s:form>
       </div>
       </s:if>
+      <s:else>
+        <div>
+           <s:form action="CompleteAction">
+                 <s:hidden name="total" value="%{total}"/>
+                 <s:hidden name="addressid" value="%{addressid}" />
+                 <s:hidden name="howdeliver" value="%{howdeliver}" />
+                 <s:hidden name="howpay" value="%{howpay}" />
+                 <input type="submit" value="確認画面へ進む">
+           </s:form>
+        </div>
+      </s:else>
   </div>
   <div id="footer">
     <div id="pr">
