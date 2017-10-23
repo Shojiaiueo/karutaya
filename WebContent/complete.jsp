@@ -13,7 +13,7 @@
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta charset="utf-8">
-  <title>購入手続き画面</title>
+  <title>購入完了画面</title>
 
 
 
@@ -73,10 +73,11 @@
   </div>
   <div id="main">
     <div id="top">
-      <p>購入手続き</p>
+      <p>購入完了</p>
     </div>
     <div>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        お買い上げありがとうございました。<br>
+        Topページは<a href="<s:url action="TopAction" />">こちら</a>
     </div>
   </div>
   <div id="footer">

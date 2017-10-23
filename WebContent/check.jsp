@@ -112,7 +112,7 @@
 
      <s:if test="%{errorflag}">
       <div>
-        <s:form>
+        <s:form action="CompleteCreditAction">
              <table border="1">
                 <tr>
                     <th>カード会社の選択</th>
@@ -127,7 +127,7 @@
                 <tr>
                     <th>カード番号</th>
                     <td>
-                         <input type="text" name="creditnumber" pattern="^[0-9]+$" required>
+                         <input type="text" name="creditnumber" pattern="^[0-9]+${16}" required>
                     </td>
                 </tr>
                 <tr>
@@ -159,12 +159,15 @@
                 <tr>
                     <th>セキュリティコード</th>
                     <td>
-                        <input type="text" name="creditsecurity" pattern="^[0-9]+$" required>
+                        <input type="text" name="creditsecurity" pattern="^[0-9]+${4}" required>
                     </td>
                 </tr>
               </table>
 
-
+                 <s:hidden name="total" value="%{total}"/>
+                 <s:hidden name="addressid" value="%{addressid}" />
+                 <s:hidden name="howdeliver" value="%{howdeliver}" />
+                 <s:hidden name="howpay" value="%{howpay}" />
                  <input type="submit" value="確認画面へ進む">
         </s:form>
       </div>

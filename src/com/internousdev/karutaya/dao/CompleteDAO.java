@@ -10,39 +10,9 @@ import com.internousdev.karutaya.util.DBConnector;
 public class CompleteDAO {
 	DBConnector db=new DBConnector();
 
-
-	//クレジット払いの場合
-	public int purchaseoutlinecredit(int userid,int total,int addressid,String howdeliver,String howpay,String creditnumber){
-		Connection con=db.getConnection();
-		String sql="INSERT INTO purchaseoutlines(userid,total,addressid,howdeliver,howpay,creditnumber) VALUES(?,?,?,?,?,?)";
-		int result=0;
-
-		try {
-			PreparedStatement ps=con.prepareStatement(sql);
-			ps.setInt(1, userid);
-			ps.setInt(2, total);
-			ps.setInt(3, addressid);
-			ps.setString(4, howdeliver);
-			ps.setString(5,howpay);
-			ps.setString(6, creditnumber);
-			result=ps.executeUpdate();
-			} catch (SQLException e) {
-			e.printStackTrace();
-		    }finally{
-		    	try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-		    }
-		return result;
-	}
-
-
-	//銀行振込みの場合
 	public int purchaseoutline(int userid,int total,int addressid,String howdeliver,String howpay){
 		Connection con=db.getConnection();
-		String sql="INSERT INTO purchaseoutlines(userid,total,addressid,howdeliver,howpay,creditnumber) VALUES(?,?,?,?,?,?)";
+		String sql="INSERT INTO purchaseoutlines(userid,total,addressid,howdeliver,howpay) VALUES(?,?,?,?,?)";
 		int result=0;
 
 		try {
@@ -93,6 +63,27 @@ public class CompleteDAO {
 			ps.setInt(2, itemid);
 			ps.setInt(3, quantity);
 
+			result=ps.executeUpdate();
+			} catch (SQLException e) {
+			e.printStackTrace();
+		    }finally{
+		    	try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		    }
+		return result;
+	}
+
+	public int cartrefresh(int sessionid){
+		Connection con=db.getConnection();
+		String sql="DELETE cart WHERE sessionid=?";
+		int result=0;
+
+		try {
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setInt(1, sessionid);
 			result=ps.executeUpdate();
 			} catch (SQLException e) {
 			e.printStackTrace();
