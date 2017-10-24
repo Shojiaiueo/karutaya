@@ -28,6 +28,7 @@
 <!-- MyPageAction -->
     <action name="MyPageAction" class="com.internousdev.karutaya.action.MyPageAction" method="execute">
       <result name="success">myPage.jsp</result>
+      <result name="error">error.jsp</result>
     </action>
 
 <!-- UserCreateAction -->

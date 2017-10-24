@@ -35,9 +35,13 @@
       margin:0 auto;
     }
 
+    h3{
+      color:red;
+    }
+
   /* ========ID LAYOUT======== */
     #top {
-       width:780px;
+       width:90%;
        margin:30px auto;
        border:1px solid #333;
     }
@@ -94,12 +98,17 @@
         <p>注文金額合計:￥<s:property value="total" /></p>
     </div>
 
-    <p>配送情報</p>
+    <h4>配送情報</h4>
     <p>ご注文主：<s:property value="userName" /></p>
     <p>配送方法：<s:property value="howdeliver" /></p>
     <p>お支払い方法：<s:property value="howpay" /></p>
-    <p>お届け先</p>
-    <table>
+    <h4>お届け先</h4>
+
+    <p><s:property value="addressname" />様</p>
+    <p>〒<s:property value="addressnumber" /></p>
+    <p><s:property value="address" /></p>
+
+     <table>
         <tr>
             <th>商品名</th><th>数量</th>
         </tr>
@@ -112,6 +121,7 @@
 
      <s:if test="%{errorflag}">
       <div>
+        <h3><s:property value="errormessage" /></h3>
         <s:form action="CompleteCreditAction">
              <table border="1">
                 <tr>
@@ -120,14 +130,14 @@
                         <select name="credittype" required>
                              <option value="visa">VISA</option>
                              <option value="mastercard">MasterCard</option>
-                             <option value="americanexpress">American Express</option>
+                             <option value="americanexpress">AmericanExpress</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <th>カード番号</th>
                     <td>
-                         <input type="text" name="creditnumber" pattern="^[0-9]+${16}" required>
+                         <input type="text" name="creditnumber" pattern="[0-9]{15,16}" required>
                     </td>
                 </tr>
                 <tr>
@@ -159,7 +169,7 @@
                 <tr>
                     <th>セキュリティコード</th>
                     <td>
-                        <input type="text" name="creditsecurity" pattern="^[0-9]+${4}" required>
+                        <input type="text" name="creditsecurity" pattern="[0-9]{3,4}" required>
                     </td>
                 </tr>
               </table>
@@ -168,6 +178,13 @@
                  <s:hidden name="addressid" value="%{addressid}" />
                  <s:hidden name="howdeliver" value="%{howdeliver}" />
                  <s:hidden name="howpay" value="%{howpay}" />
+                 <s:hidden name="itemtotal" value="%{itemtotal}" />
+                 <s:hidden name="postage" value="%{postage}" />
+                 <s:hidden name="commission" value="%{commission}" />
+                 <s:hidden name="userName" value="%{userName}" />
+                 <s:hidden name="addressname" value="%{addressname}" />
+                 <s:hidden name="addressnumber" value="%{addressnumber}" />
+                 <s:hidden name="address" value="%{address}" />
                  <input type="submit" value="確認画面へ進む">
         </s:form>
       </div>

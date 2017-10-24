@@ -13,13 +13,13 @@ public class CompleteCreditDAO {
 	    public boolean creditcheck(String credittype,String creditnumber,String creditsecurity,int creditM,int creditY){
 	    	boolean result=false;
 	    	Connection con=db.getCreditConnection(credittype);
-	    	String sql="SELECT * FROM creditcard WHERE credit_number=? AND security_code=? AND expiration_month=? AND expiration_year=?";
+	    	String sql="SELECT * FROM credit_card WHERE credit_number=? AND security_code=? AND expiration_month=? AND expiration_year=?";
 	    	try {
 				PreparedStatement ps=con.prepareStatement(sql);
 				ps.setString(1, creditnumber);
 				ps.setString(2, creditsecurity);
 				ps.setInt(3, creditM);
-				ps.setInt(4, creditY);
+				ps.setInt(4, 2000+creditY);
 				ResultSet rs=ps.executeQuery();
 				if(rs.next()){
 					result=true;
@@ -104,7 +104,7 @@ public class CompleteCreditDAO {
 
 		public int cartrefresh(int sessionid){
 			Connection con=db.getConnection();
-			String sql="DELETE cart WHERE sessionid=?";
+			String sql="DELETE FROM cart WHERE sessionid=?";
 			int result=0;
 
 			try {

@@ -1,6 +1,8 @@
 package com.internousdev.karutaya.action;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -25,44 +27,59 @@ public class CompleteCreditAction extends ActionSupport implements SessionAware{
 	private ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
 	private int total;
 	CompleteCreditDAO completedao=new CompleteCreditDAO();
+	CartAddDAO cartdao = new CartAddDAO();
+	private boolean errorflag;
+	private int itemtotal;
+	private int postage;
+	private int commission;
+	private int year[]=new int[5];
+	private String userName;
+	private String addressname;
+	private String addressnumber;
+	private String address;
 
 
 
 	public String execute(){
 		String result=ERROR;
-		if(creditnumber.equals(null)||creditsecurity.equals(null)){
-			errormessage="未入力の項目があります";
-			result=LOGIN;
-		}else{
-			if(completedao.creditcheck(credittype, creditnumber, creditsecurity, creditM, creditY)){
-				if(session.containsKey("sessionid")){
-					if(completedao.purchaseoutlinecredit((int) session.get("userId"), total, addressid, howdeliver, howpay,creditnumber)>0){
-						CartAddDAO dao = new CartAddDAO();
-						cartList=dao.cart((int) session.get("sessionid"));
-						if(cartList.size()>0){
-							int count=0;
-							for(int i=0;i<cartList.size();i++){
-								if(completedao.purchasedetail(cartList.get(i).getItemid(), cartList.get(i).getQuantity())>0){
-									count++;
+		if(session.containsKey("sessionid")){
+			cartList=cartdao.cart((int) session.get("sessionid"));
+			if(creditnumber.equals(null)||creditsecurity.equals(null)){
+				errormessage="未入力の項目があります";
+				result=LOGIN;
+			}else{
+				if(completedao.creditcheck(credittype, creditnumber, creditsecurity, creditM, creditY)){
+						if(completedao.purchaseoutlinecredit((int) session.get("userId"), total, addressid, howdeliver, howpay,creditnumber)>0){
+							if(cartList.size()>0){
+								int count=0;
+								for(int i=0;i<cartList.size();i++){
+									if(completedao.purchasedetail(cartList.get(i).getItemid(), cartList.get(i).getQuantity())>0){
+										count++;
+									}
 								}
-							}
-							if(count==cartList.size()){
-								if(completedao.cartrefresh((int) session.get("sessionid"))>0){
-									result=SUCCESS;
+								if(count==cartList.size()){
+									if(completedao.cartrefresh((int) session.get("sessionid"))>0){
+										result=SUCCESS;
+									}
 								}
 							}
 						}
-					}
-
+				}else{
+					errormessage="カード情報を確認してください";
+					result=LOGIN;
 				}
-			}else{
-				errormessage="カード情報を確認してください";
-				result=LOGIN;
+			}
+			if(result.equals(LOGIN)){
+				errorflag=true;
+				Date date=new Date();
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy");
+				int nowyear=Integer.parseInt(simpleDateFormat.format(date));
+				for(int i=0;i<5;i++){
+					    year[i]=nowyear+i;
+				}
 			}
 		}
-
-
-	      return result;
+	    return result;
 	}
 
 	public void setSession(Map<String,Object> session){
@@ -169,5 +186,78 @@ public class CompleteCreditAction extends ActionSupport implements SessionAware{
 	public void setErrormessage(String errormessage) {
 		this.errormessage = errormessage;
 	}
+
+	public int getItemtotal() {
+		return itemtotal;
+	}
+
+	public void setItemtotal(int itemtotal) {
+		this.itemtotal = itemtotal;
+	}
+
+	public int getPostage() {
+		return postage;
+	}
+
+	public void setPostage(int postage) {
+		this.postage = postage;
+	}
+
+	public int getCommission() {
+		return commission;
+	}
+
+	public void setCommission(int commission) {
+		this.commission = commission;
+	}
+
+	public boolean getErrorflag() {
+		return errorflag;
+	}
+
+	public void setErrorflag(boolean errorflag) {
+		this.errorflag = errorflag;
+	}
+
+	public int[] getYear() {
+		return year;
+	}
+
+	public void setYear(int year[]) {
+		this.year = year;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getAddressname() {
+		return addressname;
+	}
+
+	public void setAddressname(String addressname) {
+		this.addressname = addressname;
+	}
+
+	public String getAddressnumber() {
+		return addressnumber;
+	}
+
+	public void setAddressnumber(String addressnumber) {
+		this.addressnumber = addressnumber;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 
 }

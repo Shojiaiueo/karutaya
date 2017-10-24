@@ -12,9 +12,14 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	private String userName;
 
 	public String execute(){
-		PurchaseDAO dao=new PurchaseDAO();
-		userName=dao.username((int) session.get("userId"));
-		return SUCCESS;
+		if(session.containsKey("userId")){
+			PurchaseDAO dao=new PurchaseDAO();
+			userName=dao.username((int) session.get("userId"));
+			return SUCCESS;
+		}else{
+			return ERROR;
+		}
+
 	}
 
 	public void setSession(Map<String,Object> session){

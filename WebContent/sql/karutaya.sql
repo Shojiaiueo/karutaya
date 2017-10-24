@@ -174,3 +174,8 @@ INSERT INTO items(itemid,itemname,author,price,stocks,itemimg) VALUES
 (98,"","",2,1000,"img/098.jpg"),
 (99,"","",2,1000,"img/099.jpg"),
 (100,"","",2,1000,"img/100.jpg");
+
+
+
+
+
