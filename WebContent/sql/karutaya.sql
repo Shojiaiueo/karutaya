@@ -25,7 +25,7 @@ itemname varchar(50),
 author varchar(16),
 price decimal,
 stocks int,
-sales int,
+sales int default 0,
 itemimg varchar(50),
 deleted int,
 special1 int,
@@ -175,7 +175,27 @@ INSERT INTO items(itemid,itemname,author,price,stocks,itemimg) VALUES
 (99,"","",2,1000,"img/099.jpg"),
 (100,"","",2,1000,"img/100.jpg");
 
-
+UPDATE items SET special1=1 where itemid=2;
+UPDATE items SET special1=1 where itemid=9;
+UPDATE items SET special1=1 where itemid=19;
+UPDATE items SET special1=1 where itemid=38;
+UPDATE items SET special1=1 where itemid=53;
+UPDATE items SET special1=1 where itemid=54;
+UPDATE items SET special1=1 where itemid=56;
+UPDATE items SET special1=1 where itemid=57;
+UPDATE items SET special1=1 where itemid=58;
+UPDATE items SET special1=1 where itemid=59;
+UPDATE items SET special1=1 where itemid=60;
+UPDATE items SET special1=1 where itemid=61;
+UPDATE items SET special1=1 where itemid=62;
+UPDATE items SET special1=1 where itemid=65;
+UPDATE items SET special1=1 where itemid=67;
+UPDATE items SET special1=1 where itemid=72;
+UPDATE items SET special1=1 where itemid=80;
+UPDATE items SET special1=1 where itemid=88;
+UPDATE items SET special1=1 where itemid=89;
+UPDATE items SET special1=1 where itemid=90;
+UPDATE items SET special1=1 where itemid=92;
 
 
 

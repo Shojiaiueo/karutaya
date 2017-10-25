@@ -24,14 +24,11 @@ public class SearchDAO {
 		try {
 			PreparedStatement ps=connection.prepareStatement(sql);
 			String aimai="%"+searchWord+"%";
-			System.out.println(aimai);
 			ps.setString(1, aimai);
 			ResultSet rs=ps.executeQuery();
-			System.out.println("aaaaaaaaaaaaaaa");
 			while(rs.next()){
 				ItemDTO dto = new ItemDTO();
 			    dto.setItemid(rs.getInt("itemid"));
-			    System.out.println(dto.getItemid());
 			    dto.setItemname(rs.getString("itemname"));
 			    dto.setAuthor(rs.getString("author"));
 			    dto.setPrice(rs.getInt("price"));

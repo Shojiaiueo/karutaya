@@ -49,21 +49,28 @@ public class CompleteCreditAction extends ActionSupport implements SessionAware{
 				result=LOGIN;
 			}else{
 				if(completedao.creditcheck(credittype, creditnumber, creditsecurity, creditM, creditY)){
-						if(completedao.purchaseoutlinecredit((int) session.get("userId"), total, addressid, howdeliver, howpay,creditnumber)>0){
-							if(cartList.size()>0){
-								int count=0;
-								for(int i=0;i<cartList.size();i++){
-									if(completedao.purchasedetail(cartList.get(i).getItemid(), cartList.get(i).getQuantity())>0){
+					if(cartList.size()>0){
+						for(int i=0;i<cartList.size();i++){
+							if(completedao.stockcheck(cartList.get(i).getItemid())<cartList.get(i).getQuantity()){
+								return ERROR;
+							}
+						}
+					    if(completedao.purchaseoutlinecredit((int) session.get("userId"), total, addressid, howdeliver, howpay,creditnumber)>0){
+							int count=0;
+							for(int i=0;i<cartList.size();i++){
+								if(completedao.purchasedetail(cartList.get(i).getItemid(), cartList.get(i).getQuantity())>0){
+									if(completedao.salesstocks(cartList.get(i).getItemid(), cartList.get(i).getQuantity())>0){
 										count++;
 									}
 								}
-								if(count==cartList.size()){
-									if(completedao.cartrefresh((int) session.get("sessionid"))>0){
-										result=SUCCESS;
-									}
+							}//同時に複数の人が決済したらバグりそう
+							if(count==cartList.size()){
+								if(completedao.cartrefresh((int) session.get("sessionid"))>0){
+									result=SUCCESS;
 								}
 							}
 						}
+					}
 				}else{
 					errormessage="カード情報を確認してください";
 					result=LOGIN;

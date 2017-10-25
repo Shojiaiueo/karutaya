@@ -122,7 +122,7 @@
 
   <div id="main">
      <s:form action="SpecialAction">
-        <s:hidden name="special" value="special1" />
+        <s:hidden name="special" value="1" />
         <s:submit value="special1" />
      </s:form>
   </div>

@@ -23,7 +23,6 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 
 	public String execute() throws SQLException {
 		String result = ERROR;
-		System.out.println(email);
 		if(dao.createUser(email, password, userName)>0){
 		result = SUCCESS;
 		}

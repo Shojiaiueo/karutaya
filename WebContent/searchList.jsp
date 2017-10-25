@@ -72,6 +72,7 @@
       <p>商品一覧</p>
     </div>
     <div>
+         <s:if test="searchWord!=null" >"<s:property value="searchWord" />"の検索結果</s:if>
          <s:iterator value="searchList">
           <p><img src="<s:property value="itemimg" />">
           <label><a href='<s:url action="ItemAction"><s:param name="itemid"><s:property value="itemid" /></s:param></s:url>' /><s:property value="itemname" /></a></label></p>

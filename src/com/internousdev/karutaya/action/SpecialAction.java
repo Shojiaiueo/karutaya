@@ -10,7 +10,7 @@ import com.internousdev.karutaya.dto.ItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SpecialAction extends ActionSupport implements SessionAware{
-	private String special;
+	private int special;
 
 	private Map<String,Object> session;
 
@@ -19,7 +19,6 @@ public class SpecialAction extends ActionSupport implements SessionAware{
 	public String execute(){
 		SpecialDAO dao=new SpecialDAO();
 		searchList=dao.search(special);
-
 		return SUCCESS;
 	}
 
@@ -43,16 +42,20 @@ public class SpecialAction extends ActionSupport implements SessionAware{
 
 
 
-
-
-	public String getSpecial() {
+	public int getSpecial() {
 		return special;
 	}
 
 
 
-	public void setSpecial(String special) {
+	public void setSpecial(int special) {
 		this.special = special;
 	}
+
+
+
+
+
+
 
 }

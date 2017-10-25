@@ -25,16 +25,23 @@ public class CompleteAction extends ActionSupport implements SessionAware{
 	public String execute(){
 		String result=ERROR;
 		if(session.containsKey("sessionid")){
-			if(completedao.purchaseoutline((int) session.get("userId"), total, addressid, howdeliver, howpay)>0){
-				CartAddDAO dao = new CartAddDAO();
-				cartList=dao.cart((int) session.get("sessionid"));
-				if(cartList.size()>0){
+			CartAddDAO dao = new CartAddDAO();
+			cartList=dao.cart((int) session.get("sessionid"));
+			if(cartList.size()>0){
+				for(int i=0;i<cartList.size();i++){
+					if(completedao.stockcheck(cartList.get(i).getItemid())<cartList.get(i).getQuantity()){
+						return ERROR;
+					}
+				}
+			    if(completedao.purchaseoutline((int) session.get("userId"), total, addressid, howdeliver, howpay)>0){
 					int count=0;
 					for(int i=0;i<cartList.size();i++){
 						if(completedao.purchasedetail(cartList.get(i).getItemid(), cartList.get(i).getQuantity())>0){
-							count++;
+							if(completedao.salesstocks(cartList.get(i).getItemid(), cartList.get(i).getQuantity())>0){
+								count++;
+							}
 						}
-					}
+					}//同時に複数の人が決済したらバグりそう
 					if(count==cartList.size()){
 						if(completedao.cartrefresh((int) session.get("sessionid"))>0){
 							result=SUCCESS;
@@ -42,7 +49,6 @@ public class CompleteAction extends ActionSupport implements SessionAware{
 					}
 				}
 			}
-
 		}
 
 	      return result;

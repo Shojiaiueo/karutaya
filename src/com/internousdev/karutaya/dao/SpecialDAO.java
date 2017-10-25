@@ -12,15 +12,15 @@ import com.internousdev.karutaya.util.DBConnector;
 public class SpecialDAO {
 	private DBConnector dbConnector = new DBConnector();
 	private Connection connection = dbConnector.getConnection();
-	private String sql="SELECT * FROM items WHERE ? = 1";
+	private String sql="SELECT * FROM items WHERE special?= 1";
 
-	public ArrayList<ItemDTO> search(String special){
+	public ArrayList<ItemDTO> search(int special){
 		ArrayList<ItemDTO> searchList =new ArrayList<ItemDTO>();
 
 
 		try {
 			PreparedStatement ps=connection.prepareStatement(sql);
-			ps.setString(1, special);
+			ps.setInt(1, special);
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()){
 				ItemDTO dto = new ItemDTO();

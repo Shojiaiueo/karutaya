@@ -196,7 +196,7 @@
                  <s:hidden name="addressid" value="%{addressid}" />
                  <s:hidden name="howdeliver" value="%{howdeliver}" />
                  <s:hidden name="howpay" value="%{howpay}" />
-                 <input type="submit" value="確認画面へ進む">
+                 <input type="submit" value="購入を完了する">
            </s:form>
         </div>
       </s:else>

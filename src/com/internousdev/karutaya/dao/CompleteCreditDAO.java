@@ -36,6 +36,29 @@ public class CompleteCreditDAO {
 	    	return result;
 	    }
 
+	    public int stockcheck(int itemid){
+			int result=0;
+			Connection con=db.getConnection();
+			String sql="SELECT stocks FROM items WHERE itemid=?";
+			try {
+				PreparedStatement ps=con.prepareStatement(sql);
+				ps.setInt(1, itemid);
+				ResultSet rs=ps.executeQuery();
+				if(rs.next()){
+					result=rs.getInt("stocks");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return result;
+		}
+
 		public int purchaseoutlinecredit(int userid,int total,int addressid,String howdeliver,String howpay,String creditnumber){
 			Connection con=db.getConnection();
 			String sql="INSERT INTO purchaseoutlines(userid,total,addressid,howdeliver,howpay,creditnumber) VALUES(?,?,?,?,?,?)";
@@ -99,6 +122,28 @@ public class CompleteCreditDAO {
 						e.printStackTrace();
 					}
 			    }
+			return result;
+		}
+
+		public int salesstocks(int itemid,int quantity){
+			int result=0;
+			Connection con=db.getConnection();
+			String sql="UPDATE items SET stocks=stocks-?,sales=sales+? WHERE itemid=?";
+			try {
+				PreparedStatement ps=con.prepareStatement(sql);
+				ps.setInt(1, quantity);
+				ps.setInt(2, quantity);
+				ps.setInt(3, itemid);
+				result=ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 			return result;
 		}
 

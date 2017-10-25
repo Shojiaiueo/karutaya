@@ -75,23 +75,26 @@
     <div>
     <p><s:property value="userName" />様</p>
 
-    <s:if test="message != null">
-      <h3><s:property value="message"/></h3>
-    </s:if>
+
       <div id="text-right">
-        <table>
+        <s:if test="%{errorflag}">
+            <h3>購入履歴がありません。</h3>
+        </s:if>
+        <s:else>
+        <table border="1">
             <tr>
-               <th>注文日</th><th>注文内容</th><th>注文金額合計</th><th>支払方法</th>
+               <th>注文日時</th><th>注文内容</th><th>注文金額合計</th><th>支払方法</th>
             </tr>
           <s:iterator value="historyList">
             <tr>
               <td><s:property value="purchaseday" /></td>
-              <td><s:iterator value="purchaseList">・<s:property value="itemname" /><br></s:iterator></td>
+              <td><s:iterator value="purchaseList">・<s:property value="itemname" />×<s:property value="quantity" /><br></s:iterator></td>
               <td><s:property value="total" /></td>
               <td><s:property value="howpay" /></td>
             </tr>
           </s:iterator>
         </table>
+        </s:else>
         <p>Topへ戻る場合は<a href='<s:url action="TopAction" />'>こちら</a></p>
         <p>MyPageへ戻る場合は<a href='<s:url action="MyPageAction" />'>こちら</a></p>
         <p>ログアウトする場合は<a href='<s:url action="LogoutExecuteAction" />'>こちら</a></p>

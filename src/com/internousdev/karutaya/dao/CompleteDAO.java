@@ -35,6 +35,29 @@ public class CompleteDAO {
 		return result;
 	}
 
+	public int stockcheck(int itemid){
+		int result=0;
+		Connection con=db.getConnection();
+		String sql="SELECT stocks FROM items WHERE itemid=?";
+		try {
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setInt(1, itemid);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()){
+				result=rs.getInt("stocks");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 
 	//purchasedetailにpurchaseoutlineの最新のpurchaseoutlineidを使ってぶち込む。
 	public int purchasedetail(int itemid,int quantity){
@@ -76,9 +99,31 @@ public class CompleteDAO {
 		return result;
 	}
 
+	public int salesstocks(int itemid,int quantity){
+		int result=0;
+		Connection con=db.getConnection();
+		String sql="UPDATE items SET stocks=stocks-?,sales=sales+? WHERE itemid=?";
+		try {
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setInt(1, quantity);
+			ps.setInt(2, quantity);
+			ps.setInt(3, itemid);
+			result=ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 	public int cartrefresh(int sessionid){
 		Connection con=db.getConnection();
-		String sql="DELETE cart WHERE sessionid=?";
+		String sql="DELETE FROM cart WHERE sessionid=?";
 		int result=0;
 
 		try {
