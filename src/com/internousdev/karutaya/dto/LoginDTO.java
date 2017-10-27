@@ -6,6 +6,7 @@ public class LoginDTO {
 	private String userName;
 	private int userId;
 	private int deleteflag;
+	private int adminflag;
 
 	public String getEmail() {
 		return email;
@@ -36,6 +37,12 @@ public class LoginDTO {
 	}
 	public void setDeleteflag(int deleteflag) {
 		this.deleteflag = deleteflag;
+	}
+	public int getAdminflag() {
+		return adminflag;
+	}
+	public void setAdminflag(int adminflag) {
+		this.adminflag = adminflag;
 	}
 
 

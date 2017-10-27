@@ -13,7 +13,7 @@
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta charset="utf-8">
-  <title>商品一覧</title>
+  <title>管理者トップ画面</title>
   <style type="text/css">
   /* ========TAG LAYOUT======== */
     body {
@@ -47,6 +47,7 @@
 
     #main {
        width: 100%;
+       height: 500px;
        text-align: center;
     }
 
@@ -65,23 +66,20 @@
 </head>
 <body>
   <div id="header">
-    <s:include value="header.jsp" />
+    <s:include value="adminheader.jsp" />
   </div>
   <div id="main">
     <div id="top">
-      <p>商品一覧</p>
+      <p>管理者トップ</p>
     </div>
     <div>
-         <s:if test="searchWord!=null" >"<s:property value="searchWord" />"の検索結果</s:if>
-         <s:iterator value="searchList">
-          <p><img src="<s:property value="itemimg" />">
-          <label><a href='<s:url action="ItemAction"><s:param name="itemid"><s:property value="itemid" /></s:param></s:url>' ><s:property value="itemname" /></a></label></p>
-         </s:iterator>
-
-<a href='<s:url action="GoItemDetailAction" ><s:param name="item_id" ><s:property value="item_id"/></s:param></s:url>'>
-      <img src="<s:property value="item_image"/>" class="img"></a>
-
-
+      <div id="text-right">
+        <p>管理者様</p>
+        <p>商品情報の確認は<a href='<s:url action="AdminItemAction" />'>こちら</a></p>
+        <p>ユーザー情報の確認は<a href='<s:url action="AdminUserAction" />'>こちら</a></p>
+        <p>販売履歴の確認は<a href='<s:url action="AdminHistoryAction" />'>こちら</a></p>
+        <p>ログアウトする場合は<a href='<s:url action="LogoutExecuteAction" />'>こちら</a></p>
+      </div>
     </div>
   </div>
   <div id="footer">

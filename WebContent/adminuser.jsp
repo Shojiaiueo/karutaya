@@ -13,7 +13,7 @@
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta charset="utf-8">
-  <title>商品一覧</title>
+  <title>ユーザー管理画面</title>
   <style type="text/css">
   /* ========TAG LAYOUT======== */
     body {
@@ -47,6 +47,7 @@
 
     #main {
        width: 100%;
+       height: 500px;
        text-align: center;
     }
 
@@ -65,23 +66,26 @@
 </head>
 <body>
   <div id="header">
-    <s:include value="header.jsp" />
+    <s:include value="adminheader.jsp" />
   </div>
   <div id="main">
     <div id="top">
-      <p>商品一覧</p>
+      <p>ユーザー一覧</p>
     </div>
     <div>
-         <s:if test="searchWord!=null" >"<s:property value="searchWord" />"の検索結果</s:if>
-         <s:iterator value="searchList">
-          <p><img src="<s:property value="itemimg" />">
-          <label><a href='<s:url action="ItemAction"><s:param name="itemid"><s:property value="itemid" /></s:param></s:url>' ><s:property value="itemname" /></a></label></p>
-         </s:iterator>
-
-<a href='<s:url action="GoItemDetailAction" ><s:param name="item_id" ><s:property value="item_id"/></s:param></s:url>'>
-      <img src="<s:property value="item_image"/>" class="img"></a>
-
-
+      <table border="1">
+          <tr><th>id</th><th>Eメール</th><th>password</th><th>名前</th><th>管理者フラグ</th><th>削除フラグ</th></tr>
+          <s:iterator value="userList">
+             <tr>
+                 <td><s:property value="userId" /></td>
+                 <td><s:property value="email" /></td>
+                 <td><s:property value="password" /></td>
+                 <td><s:property value="userName" /></td>
+                 <td><s:property value="adminflag" /></td>
+                 <td><s:property value="deleteflag" /></td>
+             </tr>
+          </s:iterator>
+      </table>
     </div>
   </div>
   <div id="footer">

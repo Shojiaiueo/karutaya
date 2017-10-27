@@ -7,6 +7,7 @@ public class HistoryDTO {
 	private ArrayList<HistoryItemDTO> purchaseList;
 	private int total;
 	private String howpay;
+	private int userId;
 
 	public String getPurchaseday() {
 		return purchaseday;
@@ -31,5 +32,11 @@ public class HistoryDTO {
 	}
 	public void setHowpay(String howpay) {
 		this.howpay = howpay;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 }

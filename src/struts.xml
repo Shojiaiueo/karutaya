@@ -12,6 +12,7 @@
 	<!-- LoginExecuteAction -->
     <action name="LoginExecuteAction" class="com.internousdev.karutaya.action.LoginExecuteAction" method="execute">
       <result name="success">myPage.jsp</result>
+      <result name="login">admintop.jsp</result>
       <result name="error">login.jsp</result>
     </action>
 
@@ -148,6 +149,26 @@
       <result name="success">complete.jsp</result>
       <result name="login">check.jsp</result>
       <result name="error">error.jsp</result>
+    </action>
+
+<!-- AdmintopAction -->
+    <action name="AdmintopAction" class="com.internousdev.karutaya.action.AdmintopAction" method="execute">
+      <result name="success">admintop.jsp</result>
+    </action>
+
+<!-- AdminItemAction -->
+    <action name="AdminItemAction" class="com.internousdev.karutaya.action.AdminItemAction" method="execute">
+      <result name="success">adminitem.jsp</result>
+    </action>
+
+<!-- AdminUserAction -->
+    <action name="AdminUserAction" class="com.internousdev.karutaya.action.AdminUserAction" method="execute">
+      <result name="success">adminuser.jsp</result>
+    </action>
+
+<!-- AdminHistoryAction -->
+    <action name="AdminHistoryAction" class="com.internousdev.karutaya.action.AdminHistoryAction" method="execute">
+      <result name="success">adminhistory.jsp</result>
     </action>
 
 	</package>

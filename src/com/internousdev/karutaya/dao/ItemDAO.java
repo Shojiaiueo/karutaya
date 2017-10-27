@@ -32,10 +32,10 @@ public class ItemDAO {
 			    dto.setSales(rs.getInt("sales"));
 			    dto.setItemimg(rs.getString("itemimg"));
 			    dto.setDeleted(rs.getInt("deleted"));
-			    dto.setSpecial1(rs.getString("special1"));
-			    dto.setSpecial2(rs.getString("special2"));
-			    dto.setSpecial3(rs.getString("special3"));
-			    dto.setSpecial4(rs.getString("special4"));
+			    dto.setSpecial1(rs.getInt("special1"));
+			    dto.setSpecial2(rs.getInt("special2"));
+			    dto.setSpecial3(rs.getInt("special3"));
+			    dto.setSpecial4(rs.getInt("special4"));
 			    item.add(dto);
 			}
 		} catch (SQLException e) {

@@ -7,6 +7,7 @@ userid int primary key auto_increment,
 email varchar(255),
 password varchar(255),
 username varchar(255),
+adminflag int default 0,
 deleteflag int default 0
 );
 
@@ -68,9 +69,7 @@ foreign key(purchaseoutlineid) references purchaseoutlines(purchaseoutlineid),
 foreign key(itemid) references items(itemid)
 );
 
-INSERT INTO users VALUES(1,"aaa@gmail.com","111","山田太郎",0);
-
-INSERT INTO address VALUES(1,1,"山田家","１２３４５６７","東京都文京区弥生１－１ハイツサトウ３３４");
+INSERT INTO users(userid,email,password,username,adminflag) VALUES (1,"admin@admin.com","abc1234567","管理者",1);
 
 
 INSERT INTO items(itemid,itemname,author,price,stocks,itemimg) VALUES

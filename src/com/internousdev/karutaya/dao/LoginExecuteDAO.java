@@ -31,6 +31,7 @@ public class LoginExecuteDAO {
 			loginDTO.setUserId(rs.getInt("userid"));
 			loginDTO.setUserName(rs.getString("username"));
 			loginDTO.setDeleteflag(rs.getInt("deleteflag"));
+			loginDTO.setAdminflag(rs.getInt("adminflag"));
 			}else{
 				loginDTO.setUserId(0);
 			}

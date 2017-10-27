@@ -22,11 +22,14 @@ public class LoginExecuteAction extends ActionSupport implements SessionAware {
 
 		  if(dto.getUserId()>0){
 			  if(dto.getDeleteflag()==0){
-				    result=SUCCESS;
-				    session.put("userId", dto.getUserId());
-					userName=dto.getUserName();
+				  if(dto.getAdminflag()>0){
+					  result=LOGIN;
+				  }else{
+					  result=SUCCESS;
+					    session.put("userId", dto.getUserId());
+						userName=dto.getUserName();
+				  }
 			  }
-
 		  }
 		}
 

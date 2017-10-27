@@ -13,7 +13,7 @@
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta charset="utf-8">
-  <title>商品一覧</title>
+  <title>商品管理画面</title>
   <style type="text/css">
   /* ========TAG LAYOUT======== */
     body {
@@ -47,12 +47,13 @@
 
     #main {
        width: 100%;
+       height: 500px;
        text-align: center;
     }
 
     #footer {
       width: 100%;
-      height: 80px;
+      height: 90%;
       background-color: black;
       clear:both;
     }
@@ -65,23 +66,32 @@
 </head>
 <body>
   <div id="header">
-    <s:include value="header.jsp" />
+    <s:include value="adminheader.jsp" />
   </div>
   <div id="main">
     <div id="top">
-      <p>商品一覧</p>
+      <p>商品管理</p>
     </div>
     <div>
-         <s:if test="searchWord!=null" >"<s:property value="searchWord" />"の検索結果</s:if>
-         <s:iterator value="searchList">
-          <p><img src="<s:property value="itemimg" />">
-          <label><a href='<s:url action="ItemAction"><s:param name="itemid"><s:property value="itemid" /></s:param></s:url>' ><s:property value="itemname" /></a></label></p>
-         </s:iterator>
+      <div id="text-right">
 
-<a href='<s:url action="GoItemDetailAction" ><s:param name="item_id" ><s:property value="item_id"/></s:param></s:url>'>
-      <img src="<s:property value="item_image"/>" class="img"></a>
-
-
+        <table border="1">
+             <tr><th>ID</th><th>画像</th><th>商品名</th><th>作者</th><th>価格</th><th>在庫数</th><th>売上数</th><th>キャンペーン１</th></tr>
+           <s:iterator value="searchList">
+              <tr>
+              <td><s:property value="itemid" /></td>
+              <td><img src="<s:property value="itemimg" />"></td>
+              <td><s:property value="itemname" /></td>
+              <td><s:property value="author" /></td>
+              <td><s:property value="price" /></td>
+              <td><s:property value="stocks" /></td>
+              <td><s:property value="sales" /></td>
+              <td><s:property value="special1" /></td>
+              </tr>
+           </s:iterator>
+         </table>
+        <p>ログアウトする場合は<a href='<s:url action="LogoutExecuteAction" />'>こちら</a></p>
+      </div>
     </div>
   </div>
   <div id="footer">

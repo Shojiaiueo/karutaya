@@ -13,7 +13,7 @@
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta charset="utf-8">
-  <title>商品一覧</title>
+  <title>販売履歴画面</title>
   <style type="text/css">
   /* ========TAG LAYOUT======== */
     body {
@@ -47,6 +47,7 @@
 
     #main {
        width: 100%;
+       height: 500px;
        text-align: center;
     }
 
@@ -65,23 +66,33 @@
 </head>
 <body>
   <div id="header">
-    <s:include value="header.jsp" />
+    <s:include value="adminheader.jsp" />
   </div>
   <div id="main">
     <div id="top">
-      <p>商品一覧</p>
+      <p>販売履歴一覧</p>
     </div>
     <div>
-         <s:if test="searchWord!=null" >"<s:property value="searchWord" />"の検索結果</s:if>
-         <s:iterator value="searchList">
-          <p><img src="<s:property value="itemimg" />">
-          <label><a href='<s:url action="ItemAction"><s:param name="itemid"><s:property value="itemid" /></s:param></s:url>' ><s:property value="itemname" /></a></label></p>
-         </s:iterator>
 
-<a href='<s:url action="GoItemDetailAction" ><s:param name="item_id" ><s:property value="item_id"/></s:param></s:url>'>
-      <img src="<s:property value="item_image"/>" class="img"></a>
+      <div id="text-right">
+
+        <table border="1">
+            <tr>
+               <th>注文日時</th><th>購入者ID</th><th>注文内容</th><th>注文金額合計</th><th>支払方法</th>
+            </tr>
+          <s:iterator value="historyList">
+            <tr>
+              <td><s:property value="purchaseday" /></td>
+              <td><s:property value="userId" /></td>
+              <td><s:iterator value="purchaseList">・<s:property value="itemname" />×<s:property value="quantity" /><br></s:iterator></td>
+              <td><s:property value="total" /></td>
+              <td><s:property value="howpay" /></td>
+            </tr>
+          </s:iterator>
+        </table>
 
 
+      </div>
     </div>
   </div>
   <div id="footer">

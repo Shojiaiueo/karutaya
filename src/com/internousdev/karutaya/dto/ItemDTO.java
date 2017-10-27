@@ -9,10 +9,10 @@ public class ItemDTO {
 	private int sales;
 	private String itemimg;
 	private int deleted;
-	private String special1;
-	private String special2;
-	private String special3;
-	private String special4;
+	private int special1;
+	private int special2;
+	private int special3;
+	private int special4;
 
 	public int getItemid() {
 		return itemid;
@@ -62,29 +62,30 @@ public class ItemDTO {
 	public void setDeleted(int deleted) {
 		this.deleted = deleted;
 	}
-	public String getSpecial1() {
+	public int getSpecial1() {
 		return special1;
 	}
-	public void setSpecial1(String special1) {
+	public void setSpecial1(int special1) {
 		this.special1 = special1;
 	}
-	public String getSpecial2() {
+	public int getSpecial2() {
 		return special2;
 	}
-	public void setSpecial2(String special2) {
+	public void setSpecial2(int special2) {
 		this.special2 = special2;
 	}
-	public String getSpecial3() {
+	public int getSpecial3() {
 		return special3;
 	}
-	public void setSpecial3(String special3) {
+	public void setSpecial3(int special3) {
 		this.special3 = special3;
 	}
-	public String getSpecial4() {
+	public int getSpecial4() {
 		return special4;
 	}
-	public void setSpecial4(String special4) {
+	public void setSpecial4(int special4) {
 		this.special4 = special4;
 	}
+
 
 }
